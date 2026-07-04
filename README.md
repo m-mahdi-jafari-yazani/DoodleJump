@@ -28,6 +28,7 @@ The codebase is organized into independent modules, making it easy to add new ga
 * Persistent high score
 * Main menu
 * Game over screen
+* Pause functionality
 * Resource manager for textures and fonts
 * Configurable game states
 * Built using CMake
@@ -129,12 +130,15 @@ Run the game:
 
 ## 🎮 Controls
 
-| Key   | Action         |
-| ----- | -------------- |
-| ←     | Move Left      |
-| →     | Move Right     |
-| Mouse | Navigate menus |
-| ESC   | Close the game |
+| Key                 | Action                                   |
+| ------------------- | ---------------------------------------- |
+| **←** / **A**       | Move Left                                |
+| **→** / **D**       | Move Right                               |
+| **Enter**           | Start the game / Restart after Game Over |
+| **Esc**             | Pause the game                           |
+| **Esc** (Game Over) | Return to the Main Menu                  |
+
+> **Note:** The player jumps automatically upon landing on a platform, just like in the original *Doodle Jump*.
 
 ---
 
