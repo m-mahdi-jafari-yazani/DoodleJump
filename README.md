@@ -262,8 +262,7 @@ If you'd like to improve the project:
 
 **Mohammad Mahdi Jafari Yazani**
 
-GitHub:
-https://github.com/m-mahdi-jafari-yazani
+GitHub: [m-mahdi-jafari-yazani](https://github.com/m-mahdi-jafari-yazani)
 
 ---
 
