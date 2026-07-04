@@ -1,0 +1,22 @@
+# Build files
+build/
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Executables
+*.exe
+*.out
+
+# macOS
+.DS_Store
+__MACOSX/
+
+# VS Code
+.vscode/
+
+# CLion
+.idea/
