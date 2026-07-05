@@ -1,211 +1,7 @@
-# 🎮 Doodle Jump
+# Doodle Jump
 
-A modern object-oriented implementation of the classic **Doodle Jump** game written in **C++** using **SFML**. The project is built with **CMake** and follows a modular architecture to keep the code maintainable, scalable, and easy to extend.
-
----
-
-## ✨ Overview
-
-This project recreates the core mechanics of the original Doodle Jump while focusing on clean software design and modern C++ practices. The game includes multiple platform types, score tracking, camera movement, collision handling, menus, and persistent high scores.
-
-The codebase is organized into independent modules, making it easy to add new gameplay mechanics and features in future versions.
-
----
-
-## 🚀 Features
-
-* Classic Doodle Jump gameplay
-* Object-Oriented Design
-* Modular project structure
-* Multiple platform types
-
-  * Normal Platform
-  * Moving Platform
-  * Broken Platform
-* Camera system following the player
-* Collision management
-* Score system
-* Persistent high score
-* Main menu
-* Game over screen
-* Pause functionality
-* Resource manager for textures and fonts
-* Configurable game states
-* Built using CMake
-
----
-
-## 🏗️ Project Structure
-
-```
-DoodleJump
-│
-├── assets/                # Sprites and game textures
-├── fonts/                 # Game fonts
-│
-├── include/
-│   ├── Core/
-│   │   ├── Config.hpp
-│   │   ├── GameState.hpp
-│   │   ├── GameStateManager.hpp
-│   │   ├── HighScoreManager.hpp
-│   │   └── ResourceManager.hpp
-│   │
-│   ├── Physics/
-│   ├── Platform/
-│   ├── UI/
-│   │
-│   ├── Camera.hpp
-│   ├── CollisionManager.hpp
-│   ├── Game.hpp
-│   ├── Player.hpp
-│   └── ScoreManager.hpp
-│
-├── src/
-│   ├── Core/
-│   ├── Platform/
-│   ├── UI/
-│   └── main.cpp
-│
-├── CMakeLists.txt
-└── .gitignore
-```
-
----
-
-## 🛠️ Technologies Used
-
-* C++17
-* SFML
-* CMake
-* Object-Oriented Programming (OOP)
-
----
-
-## ⚙️ Requirements
-
-Before building the project, make sure you have installed:
-
-* C++17 compatible compiler
-* CMake (3.15 or newer)
-* SFML
-
----
-
-## 🔨 Build Instructions
-
-Clone the repository:
-
-```bash
-git clone https://github.com/m-mahdi-jafari-yazani/DoodleJump.git
-cd DoodleJump
-```
-
-Create a build directory:
-
-```bash
-mkdir build
-cd build
-```
-
-Generate the build files:
-
-```bash
-cmake ..
-```
-
-Compile the project:
-
-```bash
-make
-```
-
-Run the game:
-
-```bash
-./DoodleJump
-```
-
----
-
-## 🎮 Controls
-
-| Key                 | Action                                   |
-| ------------------- | ---------------------------------------- |
-| **←** / **A**       | Move Left                                |
-| **→** / **D**       | Move Right                               |
-| **Enter**           | Start the game / Restart after Game Over |
-| **Esc**             | Pause the game                           |
-| **Esc** (Game Over) | Return to the Main Menu                  |
-
-> **Note:** The player jumps automatically upon landing on a platform, just like in the original *Doodle Jump*.
-
----
-
-## 🧩 Design
-
-The project is divided into independent modules:
-
-### Core
-
-Responsible for:
-
-* Game states
-* Configuration
-* High score management
-* Resource management
-
-### Platform
-
-Implements all platform types using inheritance.
-
-Current platform types:
-
-* Normal Platform
-* Moving Platform
-* Broken Platform
-
-A Platform Factory is used to create different platform objects.
-
-### Physics
-
-Contains the player's physics state and movement logic.
-
-### UI
-
-Responsible for:
-
-* Main Menu
-* HUD
-* Game Over Screen
-
-### Camera
-
-Keeps the player centered while moving upward.
-
-### Collision
-
-Handles collisions between the player and platforms.
-
----
-
-## 📈 Future Improvements
-
-The project is designed to be extended.
-
-Planned features include:
-
-* Background music
-* Sound effects
-* Power-ups
-* Enemy system
-* Pause menu
-* Settings menu
-* Animations
-* Additional platform types
-* Particle effects
-* Save game support
-* Difficulty levels
+A modern C++ implementation of the classic **Doodle Jump** game built with **SFML**.
+The project follows an object-oriented and modular architecture, making it easy to extend with new gameplay mechanics, platform types, and interactive items.
 
 ---
 
@@ -225,44 +21,197 @@ Planned features include:
 
 ---
 
-## 📌 Development Workflow
+## ✨ Features
 
-The project is managed using Git and GitHub.
+* Classic Doodle Jump gameplay
+* Three platform types
 
-Each new feature is developed in its own branch:
-
-```
-main
-│
-├── feature/powerups
-├── feature/settings
-├── feature/music
-├── feature/enemies
-└── feature/pause-menu
-```
-
-Every feature is committed separately before being merged into the `main` branch.
-
----
-
-## 🤝 Contributing
-
-Contributions, suggestions, and bug reports are always welcome.
-
-If you'd like to improve the project:
-
-1. Fork the repository.
-2. Create a feature branch.
-3. Commit your changes.
-4. Open a Pull Request.
+  * Normal Platform
+  * Moving Platform
+  * Broken Platform
+* Spring item that boosts the player's jump
+* Automatic jumping mechanics
+* Camera system
+* Collision management
+* Score tracking
+* Persistent high score system
+* Main menu
+* Pause functionality
+* Game Over screen
+* Resource management
+* Modular object-oriented architecture
 
 ---
 
-## 👨‍💻 Author
+## 🎮 Controls
 
-**Mohammad Mahdi Jafari Yazani**
+| Key                 | Action                                   |
+| ------------------- | ---------------------------------------- |
+| **←** / **A**       | Move Left                                |
+| **→** / **D**       | Move Right                               |
+| **Enter**           | Start the game / Restart after Game Over |
+| **Esc**             | Pause the game                           |
+| **Esc** (Game Over) | Return to Main Menu                      |
 
-GitHub: [m-mahdi-jafari-yazani](https://github.com/m-mahdi-jafari-yazani)
+> The player jumps automatically after landing on a platform, just like in the original Doodle Jump.
+
+---
+
+## 🏗️ Project Architecture
+
+The project is designed with a modular architecture where each system has a clear responsibility.
+
+### Core
+
+Responsible for game state management and global resources.
+
+* Game State Manager
+* Resource Manager
+* High Score Manager
+* Configuration
+
+### Platform System
+
+Handles generation and behavior of all platform types.
+
+Current platform types:
+
+* Normal Platform
+* Moving Platform
+* Broken Platform
+
+Platforms are created using the Factory Pattern and managed through the Platform Manager.
+
+### Item System
+
+Interactive gameplay elements are implemented separately from platforms.
+
+Current item:
+
+* Spring
+
+The spring can be attached to a platform and launches the player significantly higher than a normal jump.
+
+This separation allows new items (such as Jetpacks, Shields, Coins, etc.) to be added without modifying the platform hierarchy.
+
+### Physics & Collision
+
+Responsible for:
+
+* Player movement
+* Gravity
+* Jump mechanics
+* Collision detection
+* Camera interaction
+
+### UI System
+
+Contains all user interface components:
+
+* Main Menu
+* HUD
+* Game Over Screen
+
+---
+
+## 📂 Project Structure
+
+```text
+.
+├── assets/
+├── fonts/
+├── include/
+│   ├── Core/
+│   ├── Item/
+│   ├── Physics/
+│   ├── Platform/
+│   └── UI/
+├── screenshots/
+├── src/
+│   ├── Core/
+│   ├── Item/
+│   ├── Platform/
+│   └── UI/
+├── CMakeLists.txt
+├── LICENSE
+└── README.md
+```
+
+---
+
+## 🛠️ Technologies
+
+* C++17
+* SFML
+* CMake
+
+---
+
+## 🚀 Build
+
+Clone the repository:
+
+```bash
+git clone https://github.com/m-mahdi-jafari-yazani/DoodleJump.git
+```
+
+Enter the project directory:
+
+```bash
+cd DoodleJump
+```
+
+Create a build directory:
+
+```bash
+mkdir build
+cd build
+```
+
+Generate the project:
+
+```bash
+cmake ..
+```
+
+Build:
+
+```bash
+make
+```
+
+Run:
+
+```bash
+./DoodleJump
+```
+
+---
+
+## 📈 Design Principles
+
+The project follows several software engineering principles:
+
+* Object-Oriented Design
+* Separation of Concerns
+* Modular Architecture
+* Factory Pattern
+* Resource Management
+* Single Responsibility Principle
+* Extensible Item System
+
+---
+
+## 🚀 Future Improvements
+
+* Additional items (Jetpack, Shield, Coin, etc.)
+* Monsters and enemies
+* Sound effects
+* Background music
+* Settings menu
+* Animated sprites
+* Additional platform behaviors
+* More game modes
 
 ---
 
@@ -270,4 +219,12 @@ GitHub: [m-mahdi-jafari-yazani](https://github.com/m-mahdi-jafari-yazani)
 
 This project is licensed under the MIT License.
 
-See the LICENSE file for more information.
+See the LICENSE file for details.
+
+---
+
+## 👨‍💻 Author
+
+**Mohammad Mahdi Jafari Yazani**
+
+GitHub: https://github.com/m-mahdi-jafari-yazani
