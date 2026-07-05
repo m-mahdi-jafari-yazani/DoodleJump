@@ -6,19 +6,21 @@
 #include "Core/Config.hpp"
 
 PlatformManager::PlatformManager()
-    : randomEngine(std::random_device{}()),
-      xDistribution(
-          Config::Platform::MinX,
-          Config::Platform::MaxX)
+    :
+    randomEngine(std::random_device{}()),
+    xDistribution(
+        Config::Platform::MinX,
+        Config::Platform::MaxX
+    )
 {
     createInitialPlatforms();
 }
 
 void PlatformManager::update(float deltaTime)
 {
-    for (auto& platform : platforms)
-    {
-        platform->update(deltaTime);
+    for (auto& entry : platformEntries)
+    {   
+        entry.update(deltaTime);
     }
 
     removeOffScreenPlatforms();
@@ -28,65 +30,73 @@ void PlatformManager::update(float deltaTime)
 
 void PlatformManager::draw(sf::RenderWindow& window) const
 {
-    for (const auto& platform : platforms)
+    for (const auto& entry : platformEntries)
     {
-        platform->draw(window);
+        entry.draw(window);
     }
+}
+
+std::vector<PlatformEntry>&
+PlatformManager::getPlatformEntries()
+{
+    return platformEntries;
+}
+
+const std::vector<PlatformEntry>&
+PlatformManager::getPlatformEntries() const
+{
+    return platformEntries;
 }
 
 void PlatformManager::moveAll(float dy)
 {
-    for (auto& platform : platforms)
+    for (auto& entry : platformEntries)
     {
-        platform->move(0.f, dy);
+        entry.move(dy);
     }
-}
-
-const std::vector<std::unique_ptr<Platform>>&
-PlatformManager::getPlatforms() const
-{
-    return platforms;
 }
 
 void PlatformManager::spawnPlatforms()
 {
-    while (platforms.size() < Config::Platform::Count)
+    while (platformEntries.size() < Config::Platform::Count)
     {
-        const float x = xDistribution(randomEngine);
+        const float x =
+            xDistribution(randomEngine);
 
-        platforms.push_back(
-            platformFactory.createPlatform(
-                x,
-                Config::Platform::SpawnY
-            )
+        PlatformEntry entry = platformEntryFactory.create(x, Config::Platform::SpawnY);
+
+        platformEntries.push_back(
+            std::move(entry)
         );
     }
 }
 
 void PlatformManager::removeOffScreenPlatforms()
 {
-    platforms.erase(
+    platformEntries.erase(
         std::remove_if(
-            platforms.begin(),
-            platforms.end(),
-            [](const auto& platform)
+            platformEntries.begin(),
+            platformEntries.end(),
+            [](const PlatformEntry& entry)
             {
-                return platform->getPosition().y >
-                       Config::Platform::DestroyY;
+                return entry.isOffScreen();
             }),
-        platforms.end());
+        platformEntries.end()
+    );
 }
 
 void PlatformManager::reset()
 {
-    platforms.clear();
+    platformEntries.clear();
 
     createInitialPlatforms();
 }
 
 void PlatformManager::createInitialPlatforms()
 {
-    platforms.push_back(
+    platformEntries.clear();
+
+    PlatformEntry firstEntry(
         std::make_unique<NormalPlatform>(
             Config::Player::StartX,
             Config::Player::StartY +
@@ -94,16 +104,22 @@ void PlatformManager::createInitialPlatforms()
         )
     );
 
+    platformEntries.push_back(std::move(firstEntry));
+
     float y = Config::Platform::InitialY;
 
     for (int i = 0; i < Config::Platform::Count; ++i)
     {
         const float x = xDistribution(randomEngine);
 
-        platforms.push_back(platformFactory.createPlatform(x, y));
+        PlatformEntry entry = platformEntryFactory.create(x, y);
+
+        platformEntries.push_back(std::move(entry));
 
         y -= Config::Platform::Spacing;
     }
 }
+
+
 
 

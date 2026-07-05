@@ -23,6 +23,9 @@ namespace Config
 
         constexpr const char* BrokenPlatform =
             "../assets/broken_platform.png";
+
+        constexpr const char* Spring =
+            "../assets/spring_sprite.png";
     }
 
     namespace Fonts
@@ -77,6 +80,13 @@ namespace Config
     {
         constexpr float Gravity = 900.f;
 
+        constexpr int SpawnChance = 10;
+    }
+
+    namespace Spring
+    {
+        constexpr float OffsetY = -35.f;
+        constexpr int JumpVelocity = -900;
         constexpr int SpawnChance = 10;
     }
 

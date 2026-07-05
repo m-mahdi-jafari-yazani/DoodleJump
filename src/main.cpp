@@ -21,3 +21,10 @@ int main()
     game.run();
 }
 
+// send all to AI to polish or refactor     ###
+// spring images                            ###
+// spring come in the mid of platforms      ###
+// update github and readme
+// platform collisions
+// path blocked
+

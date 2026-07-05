@@ -15,6 +15,8 @@ public:
 
     void onPlayerLanded(Player& player) override;
 
+    bool canHaveSpring() const override;
+
 private:
     bool broken = false;
 

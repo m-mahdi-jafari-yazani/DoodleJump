@@ -6,8 +6,8 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "Platform.hpp"
-#include "Platform/PlatformFactory.hpp"
+#include "Platform/PlatformEntry.hpp"
+#include "Platform/PlatformEntryFactory.hpp"
 
 class PlatformManager
 {
@@ -18,24 +18,25 @@ public:
 
     void draw(sf::RenderWindow& window) const;
 
-    void moveAll(float dy);
+    std::vector<PlatformEntry>& getPlatformEntries();
+    const std::vector<PlatformEntry>& getPlatformEntries() const;
 
-    const std::vector<std::unique_ptr<Platform>>& getPlatforms() const;
+    void moveAll(float dy);
 
     void spawnPlatforms();
 
     void removeOffScreenPlatforms();
 
-    void reset();
-    
+    void reset();    
+
 private:
     void createInitialPlatforms();
 
 private:
-    std::vector<std::unique_ptr<Platform>> platforms;
-    
+    PlatformEntryFactory platformEntryFactory;
+
+    std::vector<PlatformEntry> platformEntries;
+
     std::mt19937 randomEngine;
     std::uniform_real_distribution<float> xDistribution;
-
-    PlatformFactory platformFactory;
 };

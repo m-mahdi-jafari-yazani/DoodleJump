@@ -32,6 +32,8 @@ public:
 
     float getWidth() const;
 
+    virtual bool canHaveSpring() const;
+
 protected:
     sf::Sprite sprite;
 };

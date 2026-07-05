@@ -20,6 +20,7 @@ public:
     void move(float dx, float dy);
 
     void jump(float jumpForce);
+    void springJump();
 
     float getVelocityY() const;
     void setVelocityY(float velocity);
@@ -27,6 +28,8 @@ public:
     PhysicsState getPhysicsState() const;
 
     void reset();
+
+    bool isFalling() const;
 
 private:
     void updateDirection(bool movingLeft, bool movingRight);

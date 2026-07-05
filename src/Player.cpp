@@ -94,6 +94,11 @@ void Player::jump(float jumpForce)
     velocityY = -jumpForce;
 }
 
+void Player::springJump()
+{
+    velocityY = Config::Spring::JumpVelocity;
+}
+
 float Player::getVelocityY() const
 {
     return velocityY;
@@ -126,6 +131,11 @@ void Player::reset()
             Config::Assets::RightDoodle
         )
     );
+}
+
+bool Player::isFalling() const
+{
+    return velocityY > 0.f;
 }
 
 void Player::updateDirection(bool movingLeft, bool movingRight)

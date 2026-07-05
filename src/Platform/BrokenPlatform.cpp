@@ -42,3 +42,7 @@ void BrokenPlatform::onPlayerLanded(Player& player)
     broken = true;
 }
 
+bool BrokenPlatform::canHaveSpring() const
+{
+    return false;
+}

@@ -69,4 +69,8 @@ float Platform::getWidth() const
     return sprite.getGlobalBounds().width;
 }
 
+bool Platform::canHaveSpring() const
+{
+    return true;
+}
 

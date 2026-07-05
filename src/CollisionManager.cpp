@@ -4,17 +4,38 @@
 
 void CollisionManager::handlePlayerPlatforms(
     Player& player,
-    const std::vector<std::unique_ptr<Platform>>& platforms
-) const
+    std::vector<PlatformEntry>& platformEntries
+)
 {
-    const PhysicsState physicsState = player.getPhysicsState();
+    const PhysicsState physicsState =
+        player.getPhysicsState();
 
-    for (const auto& platform : platforms)
+    for (auto& entry : platformEntries)
     {
-        if (platform->canJumpOn(physicsState))
+        if (entry.canPlayerJumpOn(physicsState))
         {
-            platform->onPlayerLanded(player);
+            entry.playerLanded(player);
             break;
         }
     }
 }
+
+void CollisionManager::handlePlayerSprings(
+    Player& player,
+    std::vector<PlatformEntry>& platformEntries
+)
+{
+    if (!player.isFalling())
+    {
+        return;
+    }
+
+    for (auto& entry : platformEntries)
+    {
+        if (entry.checkSpringCollision(player))
+        {
+            break;
+        }
+    }
+}
+

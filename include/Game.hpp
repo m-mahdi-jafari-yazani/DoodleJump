@@ -3,9 +3,6 @@
 
 #include <SFML/Graphics.hpp>
 
-#include <memory>
-#include <vector>
-
 #include "Player.hpp"
 #include "Platform/Platform.hpp"
 #include "Platform/PlatformManager.hpp"

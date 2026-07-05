@@ -83,7 +83,12 @@ void Game::updateRunning(float deltaTime)
 
     collisionManager.handlePlayerPlatforms(
         player,
-        platformManager.getPlatforms()
+        platformManager.getPlatformEntries()
+    );
+
+    collisionManager.handlePlayerSprings(
+        player,
+        platformManager.getPlatformEntries()
     );
 
     platformManager.update(deltaTime);

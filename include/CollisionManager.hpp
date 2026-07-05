@@ -1,16 +1,21 @@
 #pragma once
 
-#include <memory>
 #include <vector>
 
 #include "Player.hpp"
-#include "Platform/Platform.hpp"
+#include "Platform/PlatformEntry.hpp"
 
 class CollisionManager
 {
 public:
     void handlePlayerPlatforms(
         Player& player,
-        const std::vector<std::unique_ptr<Platform>>& platforms
-    ) const;
+        std::vector<PlatformEntry>& platformEntries
+    );
+
+    void handlePlayerSprings(
+        Player& player,
+        std::vector<PlatformEntry>& platformEntries
+    );
 };
+
