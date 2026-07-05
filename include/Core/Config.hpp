@@ -67,6 +67,10 @@ namespace Config
 
         constexpr float MinX = 40.f;
         constexpr float MaxX = 700.f;
+
+        constexpr float MinHorizontalDistance = 70.f;
+        constexpr float MinVerticalCheckDistance = 60.f;
+        constexpr int MaxSpawnAttempts = 20;
     }
 
     namespace MovingPlatform

@@ -8,6 +8,7 @@
 
 #include "Platform/PlatformEntry.hpp"
 #include "Platform/PlatformEntryFactory.hpp"
+#include "Platform/PlatformSpawner.hpp"
 
 class PlatformManager
 {
@@ -27,16 +28,13 @@ public:
 
     void removeOffScreenPlatforms();
 
-    void reset();    
+    void reset();   
 
 private:
     void createInitialPlatforms();
 
 private:
-    PlatformEntryFactory platformEntryFactory;
-
     std::vector<PlatformEntry> platformEntries;
 
-    std::mt19937 randomEngine;
-    std::uniform_real_distribution<float> xDistribution;
+    PlatformSpawner platformSpawner;
 };

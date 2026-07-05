@@ -6,12 +6,6 @@
 #include "Core/Config.hpp"
 
 PlatformManager::PlatformManager()
-    :
-    randomEngine(std::random_device{}()),
-    xDistribution(
-        Config::Platform::MinX,
-        Config::Platform::MaxX
-    )
 {
     createInitialPlatforms();
 }
@@ -60,13 +54,11 @@ void PlatformManager::spawnPlatforms()
 {
     while (platformEntries.size() < Config::Platform::Count)
     {
-        const float x =
-            xDistribution(randomEngine);
-
-        PlatformEntry entry = platformEntryFactory.create(x, Config::Platform::SpawnY);
-
         platformEntries.push_back(
-            std::move(entry)
+            platformSpawner.create(
+                Config::Platform::SpawnY,
+                platformEntries
+            )
         );
     }
 }
@@ -110,11 +102,12 @@ void PlatformManager::createInitialPlatforms()
 
     for (int i = 0; i < Config::Platform::Count; ++i)
     {
-        const float x = xDistribution(randomEngine);
-
-        PlatformEntry entry = platformEntryFactory.create(x, y);
-
-        platformEntries.push_back(std::move(entry));
+        platformEntries.push_back(
+            platformSpawner.create(
+                y,
+                platformEntries
+            )
+        );
 
         y -= Config::Platform::Spacing;
     }
