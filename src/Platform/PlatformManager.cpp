@@ -55,10 +55,7 @@ void PlatformManager::spawnPlatforms()
     while (platformEntries.size() < Config::Platform::Count)
     {
         platformEntries.push_back(
-            platformSpawner.create(
-                Config::Platform::SpawnY,
-                platformEntries
-            )
+            platformSpawner.create(platformEntries)
         );
     }
 }
@@ -98,18 +95,11 @@ void PlatformManager::createInitialPlatforms()
 
     platformEntries.push_back(std::move(firstEntry));
 
-    float y = Config::Platform::InitialY;
-
     for (int i = 0; i < Config::Platform::Count; ++i)
     {
         platformEntries.push_back(
-            platformSpawner.create(
-                y,
-                platformEntries
-            )
+            platformSpawner.create(platformEntries)
         );
-
-        y -= Config::Platform::Spacing;
     }
 }
 
