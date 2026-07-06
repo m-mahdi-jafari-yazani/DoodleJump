@@ -81,14 +81,14 @@ namespace Config
     {
         constexpr float Speed = 100.f;
 
-        constexpr int SpawnChance = 20;
+        constexpr int SpawnChance = 25;
     }
 
     namespace BrokenPlatform
     {
         constexpr float Gravity = 900.f;
 
-        constexpr int SpawnChance = 10;
+        constexpr int SpawnChance = 5;
     }
 
     namespace Spring

@@ -50,3 +50,4 @@ ResourceCache<Resource>::get(
 
     return reference;
 }
+
