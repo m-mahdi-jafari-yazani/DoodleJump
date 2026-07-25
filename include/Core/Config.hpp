@@ -26,7 +26,24 @@ namespace Config
 
         constexpr const char* Spring =
             "../assets/spring_sprite.png";
+
+        namespace Sounds
+        {
+            constexpr const char* JumpingSound =
+                "../assets/sounds/Jumping_Sound.wav";
+
+            constexpr const char* LoosingSound =
+                "../assets/sounds/Loosing_Sound.wav";
+
+            constexpr const char* MainMenuSound =
+                "../assets/sounds/MainMenu_Song.flac";
+
+            constexpr const char* ShootingSound =
+                "../assets/sounds/Shooting_Sound.wav";
+        }
     }
+
+
 
     namespace Fonts
     {

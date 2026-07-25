@@ -14,6 +14,7 @@
 #include "UI/MainMenu.hpp"
 #include "UI/GameOver.hpp"
 #include "Core/HighScoreManager.hpp"
+#include "Core/AudioManager.hpp"
 
 class Game
 {
@@ -56,4 +57,5 @@ private:
     MainMenu mainMenu;
     GameOver gameOver;
     HighScoreManager highScoreManager;
+    AudioManager audio;
 };

@@ -21,6 +21,18 @@ Game::Game()
             Config::Assets::Background
         )
     );
+
+    auto& resources = ResourceManager::getInstance();
+
+    resources.loadSound(
+        "jump",
+        Config::Assets::Sounds::JumpingSound
+    );
+
+    resources.loadSound(
+        "lose",
+        Config::Assets::Sounds::LoosingSound
+    );
 }
 
 void Game::run()
@@ -101,7 +113,12 @@ void Game::updateRunning(float deltaTime)
 
     if (player.getPosition().y > Config::Window::Height)
     {
+        audio.stopMusic();
+
+        audio.play("lose");
+
         highScoreManager.update(scoreManager.getScore());
+
         gameStateManager.gameOver();
     }
 }
@@ -128,6 +145,13 @@ void Game::render()
 
 void Game::renderMenu()
 {
+    if (!audio.isMusicPlaying())
+    {
+        audio.playMusic(
+            Config::Assets::Sounds::MainMenuSound
+        );
+    }
+
     mainMenu.setHighScore(highScoreManager.getHighScore());
 
     window.draw(backgroundSprite);
@@ -188,6 +212,8 @@ void Game::handleMenuInput(const sf::Event& event)
 
     if (event.key.code == sf::Keyboard::Enter)
     {
+        audio.stopMusic();
+
         resetGame();
 
         gameStateManager.startGame();
@@ -228,6 +254,8 @@ void Game::handleGameOverInput(const sf::Event& event)
 
     if (event.key.code == sf::Keyboard::Enter)
     {
+        audio.stopMusic();
+
         resetGame();
 
         gameStateManager.startGame();

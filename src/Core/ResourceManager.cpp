@@ -24,3 +24,20 @@ ResourceManager::getFont(
     return fonts.get(filePath);
 }
 
+void ResourceManager::loadSound(const std::string& id,
+                                const std::string& filename)
+{
+    sf::SoundBuffer buffer;
+
+    if (!buffer.loadFromFile(filename))
+        throw std::runtime_error("Failed to load sound: " + filename);
+
+    soundBuffers.emplace(id, std::move(buffer));
+}
+
+const sf::SoundBuffer&
+ResourceManager::getSound(const std::string& id) const
+{
+    return soundBuffers.at(id);
+}
+

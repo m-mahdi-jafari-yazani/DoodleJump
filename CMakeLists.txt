@@ -7,7 +7,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_PREFIX_PATH "/opt/homebrew/opt/sfml@2")
 
-find_package(SFML 2.6 REQUIRED COMPONENTS graphics window system)
+find_package(SFML 2.6 REQUIRED COMPONENTS
+    graphics
+    window
+    system
+    audio
+)
 
 file(GLOB_RECURSE SOURCES
     src/*.cpp
@@ -24,4 +29,5 @@ target_link_libraries(DoodleJump
     sfml-graphics
     sfml-window
     sfml-system
+    sfml-audio
 )
