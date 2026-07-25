@@ -95,7 +95,8 @@ void Game::updateRunning(float deltaTime)
 
     collisionManager.handlePlayerPlatforms(
         player,
-        platformManager.getPlatformEntries()
+        platformManager.getPlatformEntries(),
+        audio
     );
 
     collisionManager.handlePlayerSprings(

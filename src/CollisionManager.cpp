@@ -4,7 +4,8 @@
 
 void CollisionManager::handlePlayerPlatforms(
     Player& player,
-    std::vector<PlatformEntry>& platformEntries
+    std::vector<PlatformEntry>& platformEntries,
+    AudioManager& audio
 )
 {
     const PhysicsState physicsState =
@@ -15,6 +16,9 @@ void CollisionManager::handlePlayerPlatforms(
         if (entry.canPlayerJumpOn(physicsState))
         {
             entry.playerLanded(player);
+
+            audio.play("jump");
+
             break;
         }
     }
