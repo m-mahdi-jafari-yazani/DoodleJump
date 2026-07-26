@@ -16,6 +16,7 @@
 #include "Core/HighScoreManager.hpp"
 #include "Core/AudioManager.hpp"
 #include "Monster/MonsterManager.hpp"
+#include "Item/BulletManager.hpp"
 
 class Game
 {
@@ -60,4 +61,5 @@ private:
     HighScoreManager highScoreManager;
     AudioManager audio;
     MonsterManager monsterManager;
+    BulletManager bulletManager;
 };

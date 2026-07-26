@@ -6,6 +6,7 @@
 #include "Platform/PlatformEntry.hpp"
 #include "Core/AudioManager.hpp"
 #include "Monster/Monster.hpp"
+#include "Item/Bullet.hpp"
 
 class CollisionManager
 {
@@ -23,6 +24,11 @@ public:
 
     bool handlePlayerMonsters(
         Player& player,
+        std::vector<std::unique_ptr<Monster>>& monsters
+    );
+
+    void handleBulletMonsters(
+        std::vector<std::unique_ptr<Bullet>>& bullets,
         std::vector<std::unique_ptr<Monster>>& monsters
     );
 };

@@ -143,6 +143,13 @@ namespace Config
         constexpr float SpawnOffset = 250.f;
         constexpr float SpawnAboveDistance = 120.f;
     }
+    
+    namespace Bullet
+    {
+        const sf::Color BulletColor = sf::Color::Black ;
+        constexpr float Speed = 600.f;
+        constexpr float Radius = 4.f;
+    }
 
     namespace Camera
     {

@@ -34,6 +34,11 @@ Game::Game()
         Config::Assets::Sounds::LoosingSound
     );
 
+    resources.loadSound(
+        "shoot",
+        Config::Assets::Sounds::ShootingSound
+    );
+
     monsterManager.respawnMonsters(
         platformManager.getPlatformEntries()
     );
@@ -96,6 +101,13 @@ void Game::update(float deltaTime)
 void Game::updateRunning(float deltaTime)
 {
     player.update(deltaTime, window.getSize().x);
+
+    bulletManager.update(deltaTime);
+
+    collisionManager.handleBulletMonsters(
+        bulletManager.getBullets(),
+        monsterManager.getMonsters()
+    );
 
     collisionManager.handlePlayerPlatforms(
         player,
@@ -202,6 +214,8 @@ void Game::renderRunning()
 
     monsterManager.draw(window);
 
+    bulletManager.draw(window);
+
     player.draw(window);
 
     hud.draw(
@@ -241,6 +255,8 @@ void Game::resetGame()
 
     monsterManager.clear();
 
+    bulletManager.clear();
+
     monsterManager.respawnMonsters(
         platformManager.getPlatformEntries()
     );
@@ -278,6 +294,19 @@ void Game::handleRunningInput(const sf::Event& event)
     if (event.key.code == sf::Keyboard::Escape)
     {
         pause();
+    }
+
+    if (event.key.code == sf::Keyboard::Space)
+    {
+        sf::Vector2f gunPosition =
+            player.getGunPosition();
+
+        bulletManager.shoot(
+            gunPosition.x,
+            gunPosition.y
+        );
+
+        audio.play("shoot");
     }
 }
 

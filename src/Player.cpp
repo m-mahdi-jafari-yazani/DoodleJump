@@ -158,4 +158,15 @@ void Player::updateDirection(bool movingLeft, bool movingRight)
     }
 }
 
+sf::Vector2f Player::getGunPosition() const
+{
+    sf::FloatRect bounds =
+        sprite.getGlobalBounds();
+
+    return
+    {
+        bounds.left + bounds.width / 2.f,
+        bounds.top
+    };
+}
 

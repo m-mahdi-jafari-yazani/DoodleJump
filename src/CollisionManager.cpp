@@ -96,3 +96,30 @@ bool CollisionManager::handlePlayerMonsters(
     return false;
 }
 
+void CollisionManager::handleBulletMonsters(
+    std::vector<std::unique_ptr<Bullet>>& bullets,
+    std::vector<std::unique_ptr<Monster>>& monsters
+)
+{
+    for (auto& bullet : bullets)
+    {
+        for (auto& monster : monsters)
+        {
+            if (!monster->isAlive())
+            {
+                continue;
+            }
+
+            if (!bullet->getBounds().intersects(
+                    monster->getBounds()))
+            {
+                continue;
+            }
+
+            monster->damage(1);
+
+            break;
+        }
+    }
+}
+

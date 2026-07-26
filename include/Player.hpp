@@ -31,6 +31,8 @@ public:
 
     bool isFalling() const;
 
+    sf::Vector2f getGunPosition() const;
+
 private:
     void updateDirection(bool movingLeft, bool movingRight);
 
