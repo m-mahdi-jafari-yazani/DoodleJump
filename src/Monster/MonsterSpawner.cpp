@@ -36,8 +36,8 @@ MonsterSpawner::findSpawnPosition(
         offsetDistribution(randomEngine);
 
     float y =
-        platform.getPosition().y +
-        Config::Monster::OffsetY;
+        platform.getPosition().y -
+        Config::Monster::SpawnAboveDistance;
 
     return {x, y};
 }

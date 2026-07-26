@@ -140,6 +140,8 @@ namespace Config
         constexpr float MinOffsetX = -120.f;
         constexpr float MaxOffsetX = 120.f;
         constexpr float JumpForce = 900.f;
+        constexpr float SpawnOffset = 250.f;
+        constexpr float SpawnAboveDistance = 120.f;
     }
 
     namespace Camera

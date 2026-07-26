@@ -90,38 +90,43 @@ void MonsterManager::spawnMonsters(
         std::random_device{}()
     );
 
-    for (std::size_t i = 1; i < platforms.size(); ++i)
-    {
-        const auto& entry = platforms[i];
+    const Platform* topPlatform = nullptr;
 
-        if (monsters.size() >= Config::Monster::Count)
+    for (const auto& entry : platforms)
+    {
+        if (topPlatform == nullptr ||
+            entry.getPlatform().getPosition().y <
+            topPlatform->getPosition().y)
         {
-            break;
+            topPlatform = &entry.getPlatform();
         }
+    }
+
+    if (topPlatform == nullptr)
+    {
+        return;
+    }
+
+    while (monsters.size() < Config::Monster::Count)
+    {
+        std::uniform_int_distribution<int> chanceDistribution(1, 100);
+
+        static std::mt19937 randomEngine(
+            std::random_device{}()
+        );
 
         if (chanceDistribution(randomEngine) >
             Config::Monster::SpawnChance)
         {
-            continue;
-        }
-
-        if (entry.getPlatform().getType() == PlatformType::Broken)
-        {
-            continue;
-        }
-
-        if (entry.hasSpring())
-        {
-            continue;
+            break;
         }
 
         auto monster =
-            monsterSpawner.create(
-                entry.getPlatform()
-            );
+            monsterSpawner.create(*topPlatform);
 
         addMonster(std::move(monster));
     }
+
 }
 
 void MonsterManager::removeOffScreenMonsters()
