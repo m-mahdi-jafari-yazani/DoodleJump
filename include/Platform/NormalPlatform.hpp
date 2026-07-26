@@ -8,6 +8,8 @@ public:
     NormalPlatform(float x, float y);
 
     void update(float deltaTime) override;
+
+    PlatformType getType() const override;
 };
 
 

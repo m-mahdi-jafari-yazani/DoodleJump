@@ -15,6 +15,7 @@
 #include "UI/GameOver.hpp"
 #include "Core/HighScoreManager.hpp"
 #include "Core/AudioManager.hpp"
+#include "Monster/MonsterManager.hpp"
 
 class Game
 {
@@ -58,4 +59,5 @@ private:
     GameOver gameOver;
     HighScoreManager highScoreManager;
     AudioManager audio;
+    MonsterManager monsterManager;
 };

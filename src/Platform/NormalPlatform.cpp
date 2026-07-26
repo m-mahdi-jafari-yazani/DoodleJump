@@ -18,3 +18,7 @@ void NormalPlatform::update(float deltaTime)
     // normal platform has not move
 }
 
+PlatformType NormalPlatform::getType() const
+{
+    return PlatformType::Normal;
+}

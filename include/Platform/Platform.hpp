@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "Physics/PhysicsState.hpp"
+#include "Platform/PlatformType.hpp"
 
 class Player;
 
@@ -33,6 +34,8 @@ public:
     float getWidth() const;
 
     virtual bool canHaveSpring() const;
+
+    virtual PlatformType getType() const = 0;
 
 protected:
     sf::Sprite sprite;

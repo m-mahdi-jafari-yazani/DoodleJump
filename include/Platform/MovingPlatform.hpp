@@ -9,6 +9,8 @@ public:
 
     void update(float deltaTime) override;
 
+    PlatformType getType() const override;
+
 private:
     float speed;
     int direction;

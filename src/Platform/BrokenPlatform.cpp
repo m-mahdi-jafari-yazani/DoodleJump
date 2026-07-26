@@ -46,3 +46,8 @@ bool BrokenPlatform::canHaveSpring() const
 {
     return false;
 }
+
+PlatformType BrokenPlatform::getType() const
+{
+    return PlatformType::Broken;
+}

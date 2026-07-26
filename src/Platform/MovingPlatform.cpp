@@ -30,3 +30,7 @@ void MovingPlatform::update(float deltaTime)
     }
 }
 
+PlatformType MovingPlatform::getType() const
+{
+    return PlatformType::Moving;
+}

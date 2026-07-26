@@ -41,6 +41,15 @@ namespace Config
             constexpr const char* ShootingSound =
                 "../assets/sounds/Shooting_Sound.wav";
         }
+
+        namespace Monsters
+        {
+            constexpr const char* MonsterOne =
+                "../assets/BlueMonster.png";
+
+            constexpr const char* MonsterTwo =
+                "../assets/green_monster.png";
+        }
     }
 
 
@@ -113,6 +122,24 @@ namespace Config
         constexpr float OffsetY = -35.f;
         constexpr int JumpVelocity = -900;
         constexpr int SpawnChance = 10;
+    }
+
+    namespace Monster
+    {
+        constexpr float Speed = 120.f;
+        constexpr int DefaultHealth = 2;
+        constexpr float MinX = 0.f;
+        constexpr float MaxX = 736.f;
+        constexpr int SpawnChance = 1;
+        constexpr int MaxSpawnAttempts = 30;
+        constexpr float SpawnOffsetX = 100.f;
+        constexpr float SpawnOffsetY = -20.f;
+        constexpr float MinDistanceBetweenMonsters = 120.f;
+        constexpr int Count = 5;
+        constexpr float OffsetY = -60.f;
+        constexpr float MinOffsetX = -120.f;
+        constexpr float MaxOffsetX = 120.f;
+        constexpr float JumpForce = 900.f;
     }
 
     namespace Camera

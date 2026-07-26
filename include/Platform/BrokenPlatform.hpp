@@ -17,6 +17,8 @@ public:
 
     bool canHaveSpring() const override;
 
+    PlatformType getType() const override;
+
 private:
     bool broken = false;
 

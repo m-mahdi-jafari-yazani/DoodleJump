@@ -33,6 +33,10 @@ Game::Game()
         "lose",
         Config::Assets::Sounds::LoosingSound
     );
+
+    monsterManager.respawnMonsters(
+        platformManager.getPlatformEntries()
+    );
 }
 
 void Game::run()
@@ -104,11 +108,41 @@ void Game::updateRunning(float deltaTime)
         platformManager.getPlatformEntries()
     );
 
+    if (
+        collisionManager.handlePlayerMonsters(
+            player,
+            monsterManager.getMonsters()
+        )
+    )
+    {
+        audio.stopMusic();
+
+        audio.play("lose");
+
+        highScoreManager.update(
+            scoreManager.getScore()
+        );
+
+        gameStateManager.gameOver();
+
+        return;
+    }
+
     platformManager.update(deltaTime);
+
+    monsterManager.update(deltaTime);
+
+    monsterManager.removeDeadMonsters();
+
+    monsterManager.respawnMonsters(
+        platformManager.getPlatformEntries()
+    );
 
     const float cameraOffset = camera.update(player);
 
     platformManager.moveAll(cameraOffset);
+
+    monsterManager.moveAll(cameraOffset);
 
     scoreManager.add(cameraOffset);
 
@@ -166,6 +200,8 @@ void Game::renderRunning()
 
     platformManager.draw(window);
 
+    monsterManager.draw(window);
+
     player.draw(window);
 
     hud.draw(
@@ -202,6 +238,14 @@ void Game::resetGame()
     player.reset();
 
     platformManager.reset();
+
+    monsterManager.clear();
+
+    monsterManager.respawnMonsters(
+        platformManager.getPlatformEntries()
+    );
+
+    scoreManager.reset();
 
     scoreManager.reset();
 }

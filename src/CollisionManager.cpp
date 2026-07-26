@@ -1,6 +1,7 @@
 #include "CollisionManager.hpp"
 
 #include "Physics/PhysicsState.hpp"
+#include "Core/Config.hpp"
 
 void CollisionManager::handlePlayerPlatforms(
     Player& player,
@@ -41,5 +42,57 @@ void CollisionManager::handlePlayerSprings(
             break;
         }
     }
+}
+
+bool CollisionManager::handlePlayerMonsters(
+    Player& player,
+    std::vector<std::unique_ptr<Monster>>& monsters
+)
+{
+    const PhysicsState physicsState =
+        player.getPhysicsState();
+
+    for (auto& monster : monsters)
+    {
+        if (!monster->isAlive())
+        {
+            continue;
+        }
+
+        if (!player.getBounds().intersects(
+                monster->getBounds()))
+        {
+            continue;
+        }
+
+        const sf::FloatRect& previous =
+            physicsState.previousBounds;
+
+        const sf::FloatRect& current =
+            physicsState.currentBounds;
+
+        const sf::FloatRect monsterBounds =
+            monster->getBounds();
+
+        const bool landedOnTop =
+            physicsState.velocityY > 0.f &&
+            previous.top + previous.height <= monsterBounds.top &&
+            current.top + current.height >= monsterBounds.top;
+
+        if (landedOnTop)
+        {
+            player.jump(
+                Config::Monster::JumpForce
+            );
+
+            monster->kill();
+
+            return false;
+        }
+
+        return true;
+    }
+
+    return false;
 }
 
