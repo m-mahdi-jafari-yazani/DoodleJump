@@ -298,6 +298,8 @@ void Game::handleRunningInput(const sf::Event& event)
 
     if (event.key.code == sf::Keyboard::Space)
     {
+        player.startShooting();
+
         sf::Vector2f gunPosition =
             player.getGunPosition();
 

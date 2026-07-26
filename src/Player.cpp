@@ -40,6 +40,29 @@ void Player::update(float deltaTime, float windowWidth)
 
     updateDirection(movingLeft, movingRight);
 
+    if (isShooting &&
+        shootingClock.getElapsedTime().asMilliseconds() >= 120)
+    {
+        isShooting = false;
+
+        if (movingLeft)
+        {
+            sprite.setTexture(
+                ResourceManager::getInstance().getTexture(
+                    Config::Assets::LeftDoodle
+                )
+            );
+        }
+        else
+        {
+            sprite.setTexture(
+                ResourceManager::getInstance().getTexture(
+                    Config::Assets::RightDoodle
+                )
+            );
+        }
+    }
+
     if (movingLeft)
     {
         sprite.move(-Config::Player::MoveSpeed * deltaTime, 0.f);
@@ -140,6 +163,11 @@ bool Player::isFalling() const
 
 void Player::updateDirection(bool movingLeft, bool movingRight)
 {
+    if (isShooting)
+    {
+        return;
+    }
+
     if (movingLeft)
     {
         sprite.setTexture(
@@ -170,3 +198,21 @@ sf::Vector2f Player::getGunPosition() const
     };
 }
 
+void Player::startShooting()
+{
+    isShooting = true;
+    shootingClock.restart();
+
+    sprite.setTexture(
+        ResourceManager::getInstance().getTexture(
+            Config::Assets::ShootingDoodle
+        )
+    );
+
+    const sf::Texture* texture = sprite.getTexture();
+
+    sprite.setOrigin(
+        texture->getSize().x / 2.f,
+        texture->getSize().y / 2.f
+    );
+}

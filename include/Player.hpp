@@ -33,11 +33,17 @@ public:
 
     sf::Vector2f getGunPosition() const;
 
+    void startShooting();
+
 private:
     void updateDirection(bool movingLeft, bool movingRight);
 
 private:
     sf::Sprite sprite;
+
+    bool isShooting = false;
+
+    sf::Clock shootingClock;
 
     float velocityY = 0.f;
 

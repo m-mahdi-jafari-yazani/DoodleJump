@@ -12,6 +12,9 @@ namespace Config
         constexpr const char* LeftDoodle =
             "../assets/left_doodle.png";
 
+        constexpr const char* ShootingDoodle =
+            "../assets/Shooting_Pose.png";
+
         constexpr const char* Background =
             "../assets/background.png";
 
