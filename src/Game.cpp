@@ -122,6 +122,26 @@ void Game::updateRunning(float deltaTime)
     );
 
     if (
+        collisionManager.handlePlayerBlackHoles(
+            player,
+            blackHoleManager.getBlackHoles()
+        )
+    )
+    {
+        audio.stopMusic();
+
+        audio.play("lose");
+
+        highScoreManager.update(
+            scoreManager.getScore()
+        );
+
+        gameStateManager.gameOver();
+
+        return;
+    }
+
+    if (
         collisionManager.handlePlayerMonsters(
             player,
             monsterManager.getMonsters()

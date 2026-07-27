@@ -162,10 +162,11 @@ namespace Config
 
     namespace BlackHole
     {
-        constexpr int SmallSpawnChance = 6;
-        constexpr int LargeSpawnChance = 2;
+        constexpr int SmallSpawnChance = 3;
+        constexpr int LargeSpawnChance = 1;
         constexpr float DestroyY = 650.f;
         constexpr float SpawnOffset = 200.f;
+        constexpr int MaxCount = 2;
     }
 
     namespace Camera

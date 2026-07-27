@@ -1,8 +1,16 @@
 #include "BlackHole/BlackHoleManager.hpp"
 
 #include <algorithm>
+#include <random>
 
 #include "Core/Config.hpp"
+
+namespace
+{
+    std::mt19937 generator(
+        std::random_device{}()
+    );
+}
 
 void BlackHoleManager::update(float deltaTime)
 {
@@ -24,6 +32,8 @@ void BlackHoleManager::update(float deltaTime)
         ),
         blackHoles.end()
     );
+
+    spawnRandom();
 }
 
 void BlackHoleManager::draw(
@@ -69,3 +79,42 @@ void BlackHoleManager::moveAll(
         blackHole.move(offset);
     }
 }
+
+void BlackHoleManager::spawnRandom()
+{
+    if (blackHoles.size() >=
+        Config::BlackHole::MaxCount)
+    {
+        return;
+    }
+
+    std::uniform_real_distribution<float>
+        xDistribution(
+            80.f,
+            720.f
+        );
+
+    std::uniform_real_distribution<float>
+        yDistribution(
+            -900.f,
+            -100.f
+        );
+
+    std::uniform_int_distribution<int>
+        typeDistribution(
+            0,
+            1
+        );
+
+    BlackHoleType type =
+        typeDistribution(generator) == 0 ?
+        BlackHoleType::Small :
+        BlackHoleType::Large;
+
+    spawn(
+        xDistribution(generator),
+        yDistribution(generator),
+        type
+    );
+}
+

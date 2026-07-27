@@ -19,6 +19,8 @@ public:
 
     void moveAll(float offset);
 
+    void spawnRandom();
+
 private:
     std::vector<BlackHole> blackHoles;
 };

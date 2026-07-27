@@ -1,6 +1,7 @@
 #include "CollisionManager.hpp"
 
 #include "Physics/PhysicsState.hpp"
+#include "BlackHole/BlackHole.hpp"
 #include "Core/Config.hpp"
 
 void CollisionManager::handlePlayerPlatforms(
@@ -121,5 +122,25 @@ void CollisionManager::handleBulletMonsters(
             break;
         }
     }
+}
+
+bool CollisionManager::handlePlayerBlackHoles(
+    const Player& player,
+    const std::vector<BlackHole>& blackHoles
+) const
+{
+    const sf::FloatRect playerBounds =
+        player.getBounds();
+
+    for (const auto& blackHole : blackHoles)
+    {
+        if (playerBounds.intersects(
+                blackHole.getBounds()))
+        {
+            return true;
+        }
+    }
+
+    return false;
 }
 
