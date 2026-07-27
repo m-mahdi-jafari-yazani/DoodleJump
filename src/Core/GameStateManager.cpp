@@ -53,3 +53,11 @@ bool GameStateManager::isMenu() const
     return currentState == GameState::Menu;
 }
 
+void GameStateManager::showSettings()
+{
+    currentState = GameState::Settings;
+}
+bool GameStateManager::isSettings() const
+{
+    return currentState == GameState::Settings;
+}

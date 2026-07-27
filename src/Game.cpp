@@ -73,6 +73,10 @@ void Game::processEvents()
             case GameState::Menu:
                 handleMenuInput(event);
                 break;
+            
+            case GameState::Settings:
+                handleSettingsInput(event);
+                break;
 
             case GameState::Running:
                 handleRunningInput(event);
@@ -203,6 +207,10 @@ void Game::render()
     {
         renderMenu();
     }
+    else if (gameStateManager.isSettings())
+    {
+        renderSettings();
+    }
     else if (gameStateManager.isGameOver())
     {
         renderGameOver();
@@ -229,6 +237,13 @@ void Game::renderMenu()
     window.draw(backgroundSprite);
 
     mainMenu.draw(window);
+}
+
+void Game::renderSettings()
+{
+    window.draw(backgroundSprite);
+
+    settingsMenu.draw(window);
 }
 
 void Game::renderRunning()
@@ -309,9 +324,27 @@ void Game::handleMenuInput(const sf::Event& event)
         gameStateManager.startGame();
     }
 
+    if (event.key.code == sf::Keyboard::S)
+    {
+        gameStateManager.showSettings();
+    }
+
     if (event.key.code == sf::Keyboard::Escape)
     {
         window.close();
+    }
+}
+
+void Game::handleSettingsInput(const sf::Event& event)
+{
+    if (event.type != sf::Event::KeyPressed)
+    {
+        return;
+    }
+
+    if (event.key.code == sf::Keyboard::Escape)
+    {
+        gameStateManager.showMenu();
     }
 }
 

@@ -15,8 +15,12 @@ MainMenu::MainMenu()
 
     title.setFont(font);
     title.setString(Config::UI::MainMenuPage::GameTitle);
-    title.setCharacterSize(Config::UI::MainMenuPage::TitleSize);
-    title.setFillColor(Config::UI::MainMenuPage::TitleColor);
+    title.setCharacterSize(
+        Config::UI::MainMenuPage::TitleSize
+    );
+    title.setFillColor(
+        Config::UI::MainMenuPage::TitleColor
+    );
 
     UIHelper::centerText(
         title,
@@ -27,9 +31,15 @@ MainMenu::MainMenu()
     // ---------- High Score ----------
 
     highScoreText.setFont(font);
-    highScoreText.setString(Config::UI::MainMenuPage::HighScorePrompt);
-    highScoreText.setCharacterSize(Config::UI::MainMenuPage::HighScoreSize);
-    highScoreText.setFillColor(Config::UI::MainMenuPage::HighScoreColor);
+    highScoreText.setString(
+        Config::UI::MainMenuPage::HighScorePrompt
+    );
+    highScoreText.setCharacterSize(
+        Config::UI::MainMenuPage::HighScoreSize
+    );
+    highScoreText.setFillColor(
+        Config::UI::MainMenuPage::HighScoreColor
+    );
 
     UIHelper::centerText(
         highScoreText,
@@ -40,9 +50,15 @@ MainMenu::MainMenu()
     // ---------- Start ----------
 
     startText.setFont(font);
-    startText.setString(Config::UI::MainMenuPage::StartPrompt);
-    startText.setCharacterSize(Config::UI::MainMenuPage::StartSize);
-    startText.setFillColor(Config::UI::MainMenuPage::StartColor);
+    startText.setString(
+        Config::UI::MainMenuPage::StartPrompt
+    );
+    startText.setCharacterSize(
+        Config::UI::MainMenuPage::StartSize
+    );
+    startText.setFillColor(
+        Config::UI::MainMenuPage::StartColor
+    );
 
     UIHelper::centerText(
         startText,
@@ -50,12 +66,37 @@ MainMenu::MainMenu()
         Config::UI::MainMenuPage::StartY
     );
 
+    // ---------- Settings ----------
+
+    settingsText.setFont(font);
+    settingsText.setString(
+        Config::UI::MainMenuPage::SettingsPrompt
+    );
+    settingsText.setCharacterSize(
+        Config::UI::MainMenuPage::SettingsSize
+    );
+    settingsText.setFillColor(
+        Config::UI::MainMenuPage::SettingsColor
+    );
+
+    UIHelper::centerText(
+        settingsText,
+        Config::Window::Width / 2.f,
+        Config::UI::MainMenuPage::SettingsY
+    );
+
     // ---------- Exit ----------
 
     exitText.setFont(font);
-    exitText.setString(Config::UI::MainMenuPage::ExitPrompt);
-    exitText.setCharacterSize(Config::UI::MainMenuPage::ExitSize);
-    exitText.setFillColor(Config::UI::MainMenuPage::ExitColor);
+    exitText.setString(
+        Config::UI::MainMenuPage::ExitPrompt
+    );
+    exitText.setCharacterSize(
+        Config::UI::MainMenuPage::ExitSize
+    );
+    exitText.setFillColor(
+        Config::UI::MainMenuPage::ExitColor
+    );
 
     UIHelper::centerText(
         exitText,
@@ -69,6 +110,7 @@ void MainMenu::draw(sf::RenderWindow& window) const
     window.draw(title);
     window.draw(highScoreText);
     window.draw(startText);
+    window.draw(settingsText);
     window.draw(exitText);
 }
 
@@ -85,4 +127,3 @@ void MainMenu::setHighScore(int score)
         Config::UI::MainMenuPage::HighScoreY
     );
 }
-

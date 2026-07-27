@@ -13,8 +13,12 @@ public:
 
 private:
     sf::Text title;
-    sf::Text startText;
-    sf::Text exitText;
 
     sf::Text highScoreText;
+
+    sf::Text startText;
+
+    sf::Text settingsText;
+
+    sf::Text exitText;
 };

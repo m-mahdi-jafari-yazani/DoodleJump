@@ -22,6 +22,9 @@ public:
     bool isGameOver() const;
     bool isMenu() const;
 
+    void showSettings();
+    bool isSettings() const;
+
 private:
     GameState currentState;
 };

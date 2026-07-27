@@ -18,6 +18,7 @@
 #include "Monster/MonsterManager.hpp"
 #include "Item/BulletManager.hpp"
 #include "BlackHole/BlackHoleManager.hpp"
+#include "UI/SettingsMenu.hpp"
 
 class Game
 {
@@ -33,6 +34,7 @@ private:
 
     void render();
     void renderMenu();
+    void renderSettings();
     void renderRunning();
     void renderGameOver();
 
@@ -42,6 +44,7 @@ private:
     void resetGame();
 
     void handleMenuInput(const sf::Event& event);
+    void handleSettingsInput(const sf::Event& event);
     void handleRunningInput(const sf::Event& event);
     void handlePausedInput(const sf::Event& event);
     void handleGameOverInput(const sf::Event& event);
@@ -64,4 +67,5 @@ private:
     MonsterManager monsterManager;
     BulletManager bulletManager;
     BlackHoleManager blackHoleManager;
+    SettingsMenu settingsMenu;
 };

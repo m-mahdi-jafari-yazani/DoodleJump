@@ -194,10 +194,15 @@ namespace Config
             const sf::Color StartColor = sf::Color::Blue;
             constexpr float StartY = 320.f;
 
+            constexpr const char* SettingsPrompt = "Press S for Settings";
+            constexpr unsigned int SettingsSize = 40;
+            const sf::Color SettingsColor = sf::Color::Black;
+            constexpr float SettingsY = 380.f;
+
             constexpr const char* ExitPrompt = "Press ESC to Exit";
             constexpr unsigned int ExitSize = 40;
             const sf::Color ExitColor = sf::Color::Cyan;
-            constexpr float ExitY = 380.f;
+            constexpr float ExitY = 440.f;
         }
         namespace PlayingPage
         {
