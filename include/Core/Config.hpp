@@ -30,6 +30,12 @@ namespace Config
         constexpr const char* Spring =
             "../assets/spring_sprite.png";
 
+        constexpr const char* SmallBlackHole =
+            "../assets/hole.png";
+
+        constexpr const char* LargeBlackHole =
+            "../assets/hole_2x.png";
+
         namespace Sounds
         {
             constexpr const char* JumpingSound =
@@ -152,6 +158,14 @@ namespace Config
         const sf::Color BulletColor = sf::Color::Black ;
         constexpr float Speed = 600.f;
         constexpr float Radius = 4.f;
+    }
+
+    namespace BlackHole
+    {
+        constexpr int SmallSpawnChance = 6;
+        constexpr int LargeSpawnChance = 2;
+        constexpr float DestroyY = 650.f;
+        constexpr float SpawnOffset = 200.f;
     }
 
     namespace Camera
