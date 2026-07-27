@@ -17,6 +17,7 @@
 #include "Core/AudioManager.hpp"
 #include "Monster/MonsterManager.hpp"
 #include "Item/BulletManager.hpp"
+#include "BlackHole/BlackHoleManager.hpp"
 
 class Game
 {
@@ -62,4 +63,5 @@ private:
     AudioManager audio;
     MonsterManager monsterManager;
     BulletManager bulletManager;
+    BlackHoleManager blackHoleManager;
 };

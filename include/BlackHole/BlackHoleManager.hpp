@@ -1,0 +1,20 @@
+#pragma once
+
+#include <vector>
+
+#include "BlackHole/BlackHole.hpp"
+
+class BlackHoleManager
+{
+public:
+    void update(float deltaTime);
+
+    void draw(sf::RenderWindow& window) const;
+
+    void clear();
+
+    std::vector<BlackHole>& getBlackHoles();
+
+private:
+    std::vector<BlackHole> blackHoles;
+};

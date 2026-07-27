@@ -144,6 +144,8 @@ void Game::updateRunning(float deltaTime)
 
     monsterManager.update(deltaTime);
 
+    blackHoleManager.update(deltaTime);
+
     monsterManager.removeDeadMonsters();
 
     monsterManager.respawnMonsters(
@@ -214,6 +216,8 @@ void Game::renderRunning()
 
     monsterManager.draw(window);
 
+    blackHoleManager.draw(window);
+
     bulletManager.draw(window);
 
     player.draw(window);
@@ -254,6 +258,8 @@ void Game::resetGame()
     platformManager.reset();
 
     monsterManager.clear();
+
+    blackHoleManager.clear();
 
     bulletManager.clear();
 
