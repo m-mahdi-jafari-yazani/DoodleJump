@@ -151,6 +151,7 @@ namespace Config
         constexpr float JumpForce = 900.f;
         constexpr float SpawnOffset = 250.f;
         constexpr float SpawnAboveDistance = 120.f;
+        constexpr float MinVerticalDistance = 80.f;
     }
     
     namespace Bullet
@@ -166,7 +167,7 @@ namespace Config
         constexpr int LargeSpawnChance = 1;
         constexpr float DestroyY = 650.f;
         constexpr float SpawnOffset = 200.f;
-        constexpr int MaxCount = 2;
+        constexpr int MaxCount = 1;
     }
 
     namespace Camera

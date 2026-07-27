@@ -146,4 +146,3 @@ bool CollisionManager::handlePlayerBlackHoles(
 
     return false;
 }
-

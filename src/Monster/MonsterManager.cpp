@@ -1,6 +1,8 @@
 #include "Monster/MonsterManager.hpp"
 
 #include <algorithm>
+#include <cmath>
+#include <unordered_set>
 
 #include "Core/Config.hpp"
 
@@ -90,19 +92,28 @@ void MonsterManager::spawnMonsters(
         std::random_device{}()
     );
 
-    const Platform* topPlatform = nullptr;
+    std::uniform_int_distribution<std::size_t>
+    platformDistribution(
+        0,
+        platforms.size() - 1
+    );
+
+    std::vector<const Platform*> spawnPlatforms;
+
+    std::vector<float> usedHeights;
 
     for (const auto& entry : platforms)
     {
-        if (topPlatform == nullptr ||
-            entry.getPlatform().getPosition().y <
-            topPlatform->getPosition().y)
+        const Platform& platform =
+            entry.getPlatform();
+
+        if (platform.getPosition().y < -50.f)
         {
-            topPlatform = &entry.getPlatform();
+            spawnPlatforms.push_back(&platform);
         }
     }
 
-    if (topPlatform == nullptr)
+    if (spawnPlatforms.empty())
     {
         return;
     }
@@ -121,8 +132,24 @@ void MonsterManager::spawnMonsters(
             break;
         }
 
+        std::uniform_int_distribution<std::size_t>
+            distribution(
+            0,
+            spawnPlatforms.size() - 1
+        );
+
+        const Platform& platform =
+            *spawnPlatforms[
+                distribution(randomEngine)
+            ];
+
+        
+
         auto monster =
-            monsterSpawner.create(*topPlatform);
+            monsterSpawner.create(
+            platform,
+            monsters
+        );
 
         addMonster(std::move(monster));
     }
