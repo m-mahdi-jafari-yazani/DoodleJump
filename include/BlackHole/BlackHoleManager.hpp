@@ -15,6 +15,10 @@ public:
 
     std::vector<BlackHole>& getBlackHoles();
 
+    void spawn(float x, float y, BlackHoleType type);
+
+    void moveAll(float offset);
+
 private:
     std::vector<BlackHole> blackHoles;
 };

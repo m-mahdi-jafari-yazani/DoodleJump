@@ -42,6 +42,7 @@ Game::Game()
     monsterManager.respawnMonsters(
         platformManager.getPlatformEntries()
     );
+
 }
 
 void Game::run()
@@ -157,6 +158,8 @@ void Game::updateRunning(float deltaTime)
     platformManager.moveAll(cameraOffset);
 
     monsterManager.moveAll(cameraOffset);
+
+    blackHoleManager.moveAll(cameraOffset);
 
     scoreManager.add(cameraOffset);
 
