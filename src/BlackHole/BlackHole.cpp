@@ -51,7 +51,16 @@ void BlackHole::update(float)
 
 sf::FloatRect BlackHole::getBounds() const
 {
-    return sprite.getGlobalBounds();
+    sf::FloatRect bounds =
+        sprite.getGlobalBounds();
+
+    bounds.left += bounds.width * 0.20f;
+    bounds.top += bounds.height * 0.20f;
+
+    bounds.width *= 0.60f;
+    bounds.height *= 0.60f;
+
+    return bounds;
 }
 
 float BlackHole::getY() const

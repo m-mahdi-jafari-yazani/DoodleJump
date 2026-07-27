@@ -82,7 +82,16 @@ sf::Vector2f Monster::getPosition() const
 
 sf::FloatRect Monster::getBounds() const
 {
-    return sprite.getGlobalBounds();
+    sf::FloatRect bounds =
+        sprite.getGlobalBounds();
+
+    bounds.left += bounds.width * 0.15f;
+    bounds.top += bounds.height * 0.15f;
+
+    bounds.width *= 0.70f;
+    bounds.height *= 0.70f;
+
+    return bounds;
 }
 
 void Monster::move(float dx, float dy)

@@ -1,7 +1,6 @@
 #include "CollisionManager.hpp"
 
 #include "Physics/PhysicsState.hpp"
-#include "BlackHole/BlackHole.hpp"
 #include "Core/Config.hpp"
 
 void CollisionManager::handlePlayerPlatforms(
@@ -75,10 +74,14 @@ bool CollisionManager::handlePlayerMonsters(
         const sf::FloatRect monsterBounds =
             monster->getBounds();
 
+        constexpr float LandingTolerance = 10.f;
+
         const bool landedOnTop =
             physicsState.velocityY > 0.f &&
-            previous.top + previous.height <= monsterBounds.top &&
-            current.top + current.height >= monsterBounds.top;
+            previous.top + previous.height <=
+                monsterBounds.top + LandingTolerance &&
+            current.top + current.height >=
+                monsterBounds.top - LandingTolerance;
 
         if (landedOnTop)
         {

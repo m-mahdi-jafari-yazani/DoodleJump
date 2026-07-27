@@ -104,7 +104,16 @@ void Player::setPosition(float x, float y)
 
 sf::FloatRect Player::getBounds() const
 {
-    return sprite.getGlobalBounds();
+    sf::FloatRect bounds =
+        sprite.getGlobalBounds();
+
+    bounds.left += bounds.width * 0.15f;
+    bounds.top += bounds.height * 0.10f;
+
+    bounds.width *= 0.70f;
+    bounds.height *= 0.80f;
+
+    return bounds;
 }
 
 void Player::move(float dx, float dy)
