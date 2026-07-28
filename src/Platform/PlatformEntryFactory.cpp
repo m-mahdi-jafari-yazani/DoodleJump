@@ -35,3 +35,12 @@ PlatformEntry PlatformEntryFactory::create(float x, float y)
         std::move(spring)
     );
 }
+
+void PlatformEntryFactory::setDifficulty(
+    Difficulty difficulty
+)
+{
+    platformFactory.setDifficulty(
+        difficulty
+    );
+}

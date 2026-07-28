@@ -3,6 +3,7 @@
 #include <random>
 
 #include "Platform/PlatformEntryFactory.hpp"
+#include "Core/Difficulty.hpp"
 
 class PlatformSpawner
 {
@@ -14,6 +15,8 @@ public:
     float generateSpawnX();
 
     float calculateSpawnY(const std::vector<PlatformEntry>& entries);
+
+    void setDifficulty(Difficulty difficulty);
 
 private:
     bool isSpawnPositionValid(

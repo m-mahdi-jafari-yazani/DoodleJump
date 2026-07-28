@@ -110,6 +110,10 @@ namespace Config
 
         constexpr float MinVerticalSpacing = 70.f;
         constexpr float MaxVerticalSpacing = 110.f;
+
+        constexpr float EasyMovingSpeed = 50.f;
+        constexpr float MediumMovingSpeed = 100.f;
+        constexpr float HardMovingSpeed = 150.f;
     }
 
     namespace MovingPlatform

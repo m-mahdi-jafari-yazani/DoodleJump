@@ -81,6 +81,15 @@ void PlatformManager::reset()
     createInitialPlatforms();
 }
 
+void PlatformManager::setDifficulty(
+    Difficulty difficulty
+)
+{
+    platformSpawner.setDifficulty(
+        difficulty
+    );
+}
+
 void PlatformManager::createInitialPlatforms()
 {
     platformEntries.clear();

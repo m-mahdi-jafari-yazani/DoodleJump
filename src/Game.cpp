@@ -14,7 +14,9 @@ Game::Game()
           Config::Window::Title
       )
 {
-    window.setFramerateLimit(Config::Window::FrameRateLimit);
+    window.setFramerateLimit(
+        Config::Window::FrameRateLimit
+    );
 
     backgroundSprite.setTexture(
         ResourceManager::getInstance().getTexture(
@@ -22,7 +24,8 @@ Game::Game()
         )
     );
 
-    auto& resources = ResourceManager::getInstance();
+    auto& resources =
+        ResourceManager::getInstance();
 
     resources.loadSound(
         "jump",
@@ -39,17 +42,23 @@ Game::Game()
         Config::Assets::Sounds::ShootingSound
     );
 
-    monsterManager.respawnMonsters(
-        platformManager.getPlatformEntries()
-    );
-
     settingsMenu.setDifficultyManager(
         &difficultyManager
     );
 
     settingsMenu.updateDifficultyText();
 
-    monsterManager.setDifficulty(difficultyManager.getDifficulty());
+    monsterManager.setDifficulty(
+        difficultyManager.getDifficulty()
+    );
+
+    platformManager.setDifficulty(
+        difficultyManager.getDifficulty()
+    );
+
+    monsterManager.respawnMonsters(
+        platformManager.getPlatformEntries()
+    );
 }
 
 void Game::run()
@@ -176,7 +185,14 @@ void Game::updateRunning(float deltaTime)
 
     monsterManager.update(deltaTime);
 
-    blackHoleManager.update(deltaTime);
+    if (difficultyManager.isBlackHoleEnabled())
+    {
+        blackHoleManager.update(deltaTime);
+    }
+    else
+    {
+        blackHoleManager.clear();
+    }
 
     monsterManager.removeDeadMonsters();
 
@@ -261,7 +277,10 @@ void Game::renderRunning()
 
     monsterManager.draw(window);
 
-    blackHoleManager.draw(window);
+    if (difficultyManager.isBlackHoleEnabled())
+    {
+        blackHoleManager.draw(window);
+    }
 
     bulletManager.draw(window);
 
@@ -380,6 +399,10 @@ void Game::handleSettingsInput(const sf::Event& event)
             difficultyManager.getDifficulty()
         );
 
+        platformManager.setDifficulty(
+            difficultyManager.getDifficulty()
+        );
+
         settingsMenu.updateDifficultyText();
     }
 
@@ -388,6 +411,10 @@ void Game::handleSettingsInput(const sf::Event& event)
         difficultyManager.next();
 
         monsterManager.setDifficulty(
+            difficultyManager.getDifficulty()
+        );
+
+        platformManager.setDifficulty(
             difficultyManager.getDifficulty()
         );
 

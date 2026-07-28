@@ -16,6 +16,8 @@ public:
 
     const char* getDifficultyName() const;
 
+    bool isBlackHoleEnabled() const;
+
 private:
 
     Difficulty difficulty;

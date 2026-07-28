@@ -3,7 +3,6 @@
 #include "Platform/BrokenPlatform.hpp"
 #include "Platform/MovingPlatform.hpp"
 #include "Platform/NormalPlatform.hpp"
-
 #include "Core/Config.hpp"
 
 std::unique_ptr<Platform> PlatformFactory::createPlatform(float x, float y)
@@ -13,6 +12,14 @@ std::unique_ptr<Platform> PlatformFactory::createPlatform(float x, float y)
 
     return createPlatform(type, x, y);
 }
+
+void PlatformFactory::setDifficulty(
+    Difficulty value
+)
+{
+    difficulty = value;
+}
+
 
 PlatformType PlatformFactory::choosePlatformType()
 {
@@ -52,10 +59,34 @@ PlatformFactory::createPlatform(
             );
 
         case PlatformType::Moving:
-            return std::make_unique<MovingPlatform>(
-                x,
-                y
-            );
+        {
+            auto platform =
+                std::make_unique<MovingPlatform>(
+                    x,
+                    y
+                );
+
+            if (difficulty == Difficulty::Easy)
+            {
+                platform->setSpeed(
+                    Config::Platform::EasyMovingSpeed
+                );
+            }
+            else if (difficulty == Difficulty::Medium)
+            {
+                platform->setSpeed(
+                    Config::Platform::MediumMovingSpeed
+                );
+            }
+            else
+            {
+                platform->setSpeed(
+                    Config::Platform::HardMovingSpeed
+                );
+            }
+
+            return platform;
+        }
 
         case PlatformType::Broken:
             return std::make_unique<BrokenPlatform>(

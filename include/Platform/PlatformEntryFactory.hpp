@@ -4,6 +4,7 @@
 
 #include "Platform/PlatformEntry.hpp"
 #include "Platform/PlatformFactory.hpp"
+#include "Core/Difficulty.hpp"
 
 class PlatformEntryFactory
 {
@@ -11,6 +12,8 @@ public:
     PlatformEntryFactory();
 
     PlatformEntry create(float x, float y);
+
+    void setDifficulty(Difficulty difficulty);
 
 private:
     PlatformFactory platformFactory;

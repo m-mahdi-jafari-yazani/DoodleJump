@@ -11,6 +11,8 @@ public:
 
     PlatformType getType() const override;
 
+    void setSpeed(float value);
+
 private:
     float speed;
     int direction;

@@ -34,3 +34,8 @@ PlatformType MovingPlatform::getType() const
 {
     return PlatformType::Moving;
 }
+
+void MovingPlatform::setSpeed(float value)
+{
+    speed = value;
+}

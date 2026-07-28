@@ -9,6 +9,7 @@
 #include "Platform/PlatformEntry.hpp"
 #include "Platform/PlatformEntryFactory.hpp"
 #include "Platform/PlatformSpawner.hpp"
+#include "Core/Difficulty.hpp"
 
 class PlatformManager
 {
@@ -29,6 +30,8 @@ public:
     void removeOffScreenPlatforms();
 
     void reset();   
+
+    void setDifficulty(Difficulty difficulty);
 
 private:
     void createInitialPlatforms();

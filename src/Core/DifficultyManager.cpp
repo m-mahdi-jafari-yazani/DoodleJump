@@ -61,3 +61,8 @@ const char* DifficultyManager::getDifficultyName() const
 
     return "Medium";
 }
+
+bool DifficultyManager::isBlackHoleEnabled() const
+{
+    return difficulty == Difficulty::Hard;
+}

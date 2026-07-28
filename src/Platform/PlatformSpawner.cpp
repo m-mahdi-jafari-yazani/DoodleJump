@@ -58,6 +58,15 @@ float PlatformSpawner::calculateSpawnY(
         - spacing;
 }
 
+void PlatformSpawner::setDifficulty(
+    Difficulty difficulty
+)
+{
+    platformEntryFactory.setDifficulty(
+        difficulty
+    );
+}
+
 bool PlatformSpawner::isSpawnPositionValid(
     float x,
     float y,
