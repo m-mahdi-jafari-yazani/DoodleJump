@@ -37,6 +37,9 @@ void AudioManager::playMusic(const std::string& filePath)
     }
 
     music.setLoop(true);
+
+    music.setVolume(musicVolume);
+
     music.play();
 }
 
@@ -63,10 +66,27 @@ void AudioManager::setSoundVolume(float volume)
 
 void AudioManager::setMusicVolume(float volume)
 {
-    music.setVolume(volume);
+    if (volume < 0.f)
+    {
+        volume = 0.f;
+    }
+
+    if (volume > 100.f)
+    {
+        volume = 100.f;
+    }
+
+    musicVolume = volume;
+
+    music.setVolume(musicVolume);
 }
 
 bool AudioManager::isMusicPlaying() const
 {
     return music.getStatus() == sf::Music::Playing;
+}
+
+float AudioManager::getMusicVolume() const
+{
+    return musicVolume;
 }

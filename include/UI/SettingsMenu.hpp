@@ -7,11 +7,20 @@ class SettingsMenu
 public:
     SettingsMenu();
 
-    void draw(sf::RenderWindow& window);
+    void draw(sf::RenderWindow& window) const;
+
+    void setVolume(float volume);
+
+    float getVolume() const;
 
 private:
     sf::Text title;
+
     sf::Text volumeText;
-    sf::Text difficultyText;
-    sf::Font font;
+
+    sf::Text instructionText;
+
+    sf::Text backText;
+
+    float volume = 100.f;
 };

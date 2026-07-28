@@ -204,6 +204,31 @@ namespace Config
             const sf::Color ExitColor = sf::Color::Cyan;
             constexpr float ExitY = 440.f;
         }
+
+        namespace SettingsPage
+        {
+            constexpr const char* Title = "SETTINGS";
+            constexpr unsigned int TitleSize = 70;
+            const sf::Color TitleColor = sf::Color::Black;
+            constexpr float TitleY = 120.f;
+
+            constexpr const char* VolumePrefix = "Music Volume : ";
+            constexpr unsigned int VolumeSize = 40;
+            const sf::Color VolumeColor = sf::Color::Magenta;
+            constexpr float VolumeY = 260.f;
+
+            constexpr const char* Instruction =
+                "LEFT / RIGHT : Change Music Volume";
+            constexpr unsigned int InstructionSize = 30;
+            const sf::Color InstructionColor = sf::Color::Green;
+            constexpr float InstructionY = 360.f;
+
+            constexpr const char* BackPrompt =
+                "Press ESC to Return";
+            constexpr unsigned int BackSize = 30;
+            const sf::Color BackColor = sf::Color::Cyan;
+            constexpr float BackY = 430.f;
+        }
         namespace PlayingPage
         {
             constexpr const char* ScorePrompt = "Score : ";

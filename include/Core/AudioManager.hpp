@@ -26,10 +26,13 @@ public:
 
     bool isMusicPlaying() const;
 
+    float getMusicVolume() const;
+
 private:
     std::vector<sf::Sound> activeSounds;
 
     sf::Music music;
 
     float soundVolume = 100.f;
+    float musicVolume = 100.f;
 };

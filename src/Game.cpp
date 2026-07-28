@@ -342,6 +342,33 @@ void Game::handleSettingsInput(const sf::Event& event)
         return;
     }
 
+    float volume =
+        audio.getMusicVolume();
+
+    if (event.key.code == sf::Keyboard::Left)
+    {
+        volume -= 5.f;
+    }
+
+    if (event.key.code == sf::Keyboard::Right)
+    {
+        volume += 5.f;
+    }
+
+    if (volume < 0.f)
+    {
+        volume = 0.f;
+    }
+
+    if (volume > 100.f)
+    {
+        volume = 100.f;
+    }
+
+    audio.setMusicVolume(volume);
+
+    settingsMenu.setVolume(volume);
+
     if (event.key.code == sf::Keyboard::Escape)
     {
         gameStateManager.showMenu();
