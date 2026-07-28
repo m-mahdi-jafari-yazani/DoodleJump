@@ -180,3 +180,13 @@ void MonsterManager::respawnMonsters(
     spawnMonsters(platforms);
 }
 
+void MonsterManager::setDifficulty(
+    Difficulty value
+)
+{
+    difficulty = value;
+
+    monsterSpawner.setDifficulty(
+        value
+    );
+}

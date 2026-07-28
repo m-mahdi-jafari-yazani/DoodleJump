@@ -48,6 +48,8 @@ Game::Game()
     );
 
     settingsMenu.updateDifficultyText();
+
+    monsterManager.setDifficulty(difficultyManager.getDifficulty());
 }
 
 void Game::run()
@@ -373,12 +375,22 @@ void Game::handleSettingsInput(const sf::Event& event)
     if (event.key.code == sf::Keyboard::Down)
     {
         difficultyManager.previous();
+
+        monsterManager.setDifficulty(
+            difficultyManager.getDifficulty()
+        );
+
         settingsMenu.updateDifficultyText();
     }
 
     if (event.key.code == sf::Keyboard::Up)
     {
         difficultyManager.next();
+
+        monsterManager.setDifficulty(
+            difficultyManager.getDifficulty()
+        );
+
         settingsMenu.updateDifficultyText();
     }
 

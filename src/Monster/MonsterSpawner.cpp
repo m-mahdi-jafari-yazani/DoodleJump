@@ -97,3 +97,11 @@ MonsterSpawner::generatePosition(
     return findSpawnPosition(platform);
 }
 
+void MonsterSpawner::setDifficulty(
+    Difficulty difficulty
+)
+{
+    monsterFactory.setDifficulty(
+        difficulty
+    );
+}

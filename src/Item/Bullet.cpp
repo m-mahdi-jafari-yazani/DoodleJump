@@ -46,3 +46,13 @@ sf::FloatRect Bullet::getBounds() const
 {
     return shape.getGlobalBounds();
 }
+
+bool Bullet::isAlive() const
+{
+    return alive;
+}
+
+void Bullet::destroy()
+{
+    alive = false;
+}

@@ -152,6 +152,14 @@ namespace Config
         constexpr float SpawnOffset = 250.f;
         constexpr float SpawnAboveDistance = 120.f;
         constexpr float MinVerticalDistance = 80.f;
+
+        constexpr float EasySpeed = 100.f;
+        constexpr float MediumSpeed = 150.f;
+        constexpr float HardSpeed = 200.f;
+
+        constexpr int EasyHealth = 1;
+        constexpr int MediumHealth = 2;
+        constexpr int HardHealth = 3;
     }
     
     namespace Bullet

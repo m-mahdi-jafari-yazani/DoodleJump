@@ -8,6 +8,7 @@
 #include "Monster/Monster.hpp"
 #include "Monster/MonsterSpawner.hpp"
 #include "Platform/PlatformEntry.hpp"
+#include "Core/Difficulty.hpp"
 
 class MonsterManager
 {
@@ -37,7 +38,10 @@ public:
 
     void respawnMonsters(const std::vector<PlatformEntry>& platforms);
 
+    void setDifficulty(Difficulty difficulty);
+
 private:
     std::vector<std::unique_ptr<Monster>> monsters;
     MonsterSpawner monsterSpawner;
+    Difficulty difficulty = Difficulty::Medium;
 };

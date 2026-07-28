@@ -211,3 +211,8 @@ bool Monster::canPlayerBounce(
 
     return crossedTop && overlap;
 }
+
+void Monster::setSpeed(float value)
+{
+    speed = value;
+}

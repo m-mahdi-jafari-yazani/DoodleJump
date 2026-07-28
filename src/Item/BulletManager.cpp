@@ -13,6 +13,17 @@ void BulletManager::update(float deltaTime)
         bullet->update(deltaTime);
     }
 
+    bullets.erase(
+        std::remove_if(
+            bullets.begin(),
+            bullets.end(),
+            [](const auto& bullet)
+            {
+                return !bullet->isAlive();
+            }),
+        bullets.end()
+    );
+
     removeOffScreenBullets();
 }
 

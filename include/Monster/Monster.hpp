@@ -45,6 +45,8 @@ public:
 
     bool canPlayerBounce(const PhysicsState& physicsState) const;
 
+    void setSpeed(float value);
+
 protected:
     sf::Sprite sprite;
 

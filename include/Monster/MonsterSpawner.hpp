@@ -8,6 +8,7 @@
 
 #include "Monster/MonsterFactory.hpp"
 #include "Platform/PlatformEntry.hpp"
+#include "Core/Difficulty.hpp"
 
 class MonsterSpawner
 {
@@ -22,6 +23,8 @@ public:
     sf::Vector2f findSpawnPosition(
         const Platform& platform
     );
+
+    void setDifficulty(Difficulty difficulty);
 private:
     bool isPositionValid(
         const sf::Vector2f& position,

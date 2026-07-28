@@ -31,6 +31,41 @@ MonsterFactory::createMonster(
     auto monster =
         std::make_unique<Monster>();
 
+    // ---------- Difficulty ----------
+
+    if (difficulty == Difficulty::Easy)
+    {
+        monster->setHealth(
+            Config::Monster::EasyHealth
+        );
+
+        monster->setSpeed(
+            Config::Monster::EasySpeed
+        );
+    }
+    else if (difficulty == Difficulty::Medium)
+    {
+        monster->setHealth(
+            Config::Monster::MediumHealth
+        );
+
+        monster->setSpeed(
+            Config::Monster::MediumSpeed
+        );
+    }
+    else
+    {
+        monster->setHealth(
+            Config::Monster::HardHealth
+        );
+
+        monster->setSpeed(
+            Config::Monster::HardSpeed
+        );
+    }
+
+    // ---------- Type ----------
+
     MonsterType type =
         chooseMonsterType();
 
@@ -55,7 +90,16 @@ MonsterFactory::createMonster(
 
     monster->setPosition(x, y);
 
-    monster->setDirection(directionDistribution(randomEngine) == 0 ? -1 : 1);
+    monster->setDirection(
+        directionDistribution(randomEngine) == 0 ? -1 : 1
+    );
 
     return monster;
+}
+
+void MonsterFactory::setDifficulty(
+    Difficulty value
+)
+{
+    difficulty = value;
 }

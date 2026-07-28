@@ -15,8 +15,14 @@ public:
 
     sf::FloatRect getBounds() const;
 
+    bool isAlive() const;
+
+    void destroy();
+
 private:
     sf::CircleShape shape;
 
     float speed;
+
+    bool alive = true;
 };

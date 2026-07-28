@@ -122,6 +122,8 @@ void CollisionManager::handleBulletMonsters(
 
             monster->damage(1);
 
+            bullet->destroy();
+
             break;
         }
     }
