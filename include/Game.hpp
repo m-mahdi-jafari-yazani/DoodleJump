@@ -19,6 +19,7 @@
 #include "Item/BulletManager.hpp"
 #include "BlackHole/BlackHoleManager.hpp"
 #include "UI/SettingsMenu.hpp"
+#include "Core/DifficultyManager.hpp"
 
 class Game
 {
@@ -68,4 +69,5 @@ private:
     BulletManager bulletManager;
     BlackHoleManager blackHoleManager;
     SettingsMenu settingsMenu;
+    DifficultyManager difficultyManager;
 };

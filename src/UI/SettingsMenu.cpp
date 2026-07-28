@@ -44,6 +44,26 @@ SettingsMenu::SettingsMenu()
 
     setVolume(100.f);
 
+    // ---------- Difficulty ----------
+
+    difficultyText.setFont(font);
+    difficultyText.setCharacterSize(
+        Config::UI::SettingsPage::DifficultySize
+    );
+    difficultyText.setFillColor(
+        Config::UI::SettingsPage::DifficultyColor
+    );
+
+    difficultyText.setString(
+        "Difficulty : Medium"
+    );
+
+    UIHelper::centerText(
+        difficultyText,
+        Config::Window::Width / 2.f,
+        Config::UI::SettingsPage::DifficultyY
+    );
+
     // ---------- Instruction ----------
 
     instructionText.setFont(font);
@@ -89,13 +109,12 @@ void SettingsMenu::draw(
 {
     window.draw(title);
     window.draw(volumeText);
+    window.draw(difficultyText);
     window.draw(instructionText);
     window.draw(backText);
 }
 
-void SettingsMenu::setVolume(
-    float value
-)
+void SettingsMenu::setVolume(float value)
 {
     volume = value;
 
@@ -118,4 +137,34 @@ void SettingsMenu::setVolume(
 float SettingsMenu::getVolume() const
 {
     return volume;
+}
+
+void SettingsMenu::setDifficultyManager(
+    DifficultyManager* manager
+)
+{
+    difficultyManager = manager;
+
+    updateDifficultyText();
+}
+
+void SettingsMenu::updateDifficultyText()
+{
+    if (difficultyManager == nullptr)
+    {
+        return;
+    }
+
+    difficultyText.setString(
+        std::string(
+            Config::UI::SettingsPage::DifficultyPrefix
+        ) +
+        difficultyManager->getDifficultyName()
+    );
+
+    UIHelper::centerText(
+        difficultyText,
+        Config::Window::Width / 2.f,
+        Config::UI::SettingsPage::DifficultyY
+    );
 }

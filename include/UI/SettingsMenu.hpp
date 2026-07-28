@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "Core/DifficultyManager.hpp"
 
 class SettingsMenu
 {
@@ -13,6 +14,10 @@ public:
 
     float getVolume() const;
 
+    void setDifficultyManager(DifficultyManager* manager);
+
+    void updateDifficultyText();
+
 private:
     sf::Text title;
 
@@ -23,4 +28,8 @@ private:
     sf::Text backText;
 
     float volume = 100.f;
+
+    sf::Text difficultyText;
+
+    DifficultyManager* difficultyManager = nullptr;
 };

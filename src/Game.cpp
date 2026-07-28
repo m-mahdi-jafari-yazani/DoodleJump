@@ -43,6 +43,11 @@ Game::Game()
         platformManager.getPlatformEntries()
     );
 
+    settingsMenu.setDifficultyManager(
+        &difficultyManager
+    );
+
+    settingsMenu.updateDifficultyText();
 }
 
 void Game::run()
@@ -363,6 +368,18 @@ void Game::handleSettingsInput(const sf::Event& event)
     if (volume > 100.f)
     {
         volume = 100.f;
+    }
+
+    if (event.key.code == sf::Keyboard::Down)
+    {
+        difficultyManager.previous();
+        settingsMenu.updateDifficultyText();
+    }
+
+    if (event.key.code == sf::Keyboard::Up)
+    {
+        difficultyManager.next();
+        settingsMenu.updateDifficultyText();
     }
 
     audio.setMusicVolume(volume);

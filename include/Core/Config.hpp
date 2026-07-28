@@ -217,6 +217,11 @@ namespace Config
             const sf::Color VolumeColor = sf::Color::Magenta;
             constexpr float VolumeY = 260.f;
 
+            constexpr const char* DifficultyPrefix = "Difficulty : ";
+            constexpr float DifficultyY = 300.f;
+            constexpr unsigned int DifficultySize = 34;
+            const sf::Color DifficultyColor = sf::Color::Blue;
+
             constexpr const char* Instruction =
                 "LEFT / RIGHT : Change Music Volume";
             constexpr unsigned int InstructionSize = 30;
