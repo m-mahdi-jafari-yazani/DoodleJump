@@ -1,25 +1,49 @@
 #include "Core/HighScoreManager.hpp"
 
 #include <fstream>
+#include <array>
 
 #include "Core/Config.hpp"
 
-HighScoreManager::HighScoreManager()
-    : highScore(0)
+namespace
 {
+    std::size_t toIndex(
+        Difficulty difficulty
+    )
+    {
+        return static_cast<std::size_t>(
+            difficulty
+        );
+    }
+}
+
+HighScoreManager::HighScoreManager()
+{
+    highScores.fill(0);
+
     load();
 }
 
-int HighScoreManager::getHighScore() const
+int HighScoreManager::getHighScore(
+    Difficulty difficulty
+) const
 {
-    return highScore;
+    return highScores[
+        toIndex(difficulty)
+    ];
 }
 
-void HighScoreManager::update(int score)
+void HighScoreManager::update(
+    Difficulty difficulty,
+    int score
+)
 {
-    if (score > highScore)
+    std::size_t index =
+        toIndex(difficulty);
+
+    if (score > highScores[index])
     {
-        highScore = score;
+        highScores[index] = score;
 
         save();
     }
@@ -27,31 +51,41 @@ void HighScoreManager::update(int score)
 
 void HighScoreManager::load()
 {
-    std::ifstream file(Config::Save::HighScoreFile);
+    std::ifstream file(
+        Config::Save::HighScoreFile
+    );
 
     if (!file.is_open())
     {
-        highScore = 0;
+        highScores.fill(0);
         return;
     }
 
-    file >> highScore;
-
-    if (file.fail())
+    for (int& score : highScores)
     {
-        highScore = 0;
+        if (!(file >> score))
+        {
+            score = 0;
+        }
     }
 }
 
 void HighScoreManager::save() const
 {
-    std::ofstream file(Config::Save::HighScoreFile);
+    std::ofstream file(
+        Config::Save::HighScoreFile
+    );
 
     if (!file.is_open())
     {
         return;
     }
 
-    file << highScore;
+    for (int score : highScores)
+    {
+        file
+            << score
+            << '\n';
+    }
 }
 

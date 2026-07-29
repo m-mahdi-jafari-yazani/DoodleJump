@@ -153,6 +153,7 @@ void Game::updateRunning(float deltaTime)
         audio.play("lose");
 
         highScoreManager.update(
+            difficultyManager.getDifficulty(),
             scoreManager.getScore()
         );
 
@@ -173,6 +174,7 @@ void Game::updateRunning(float deltaTime)
         audio.play("lose");
 
         highScoreManager.update(
+            difficultyManager.getDifficulty(),
             scoreManager.getScore()
         );
 
@@ -216,7 +218,10 @@ void Game::updateRunning(float deltaTime)
 
         audio.play("lose");
 
-        highScoreManager.update(scoreManager.getScore());
+        highScoreManager.update(
+            difficultyManager.getDifficulty(),
+            scoreManager.getScore()
+        );
 
         gameStateManager.gameOver();
     }
@@ -255,7 +260,11 @@ void Game::renderMenu()
         );
     }
 
-    mainMenu.setHighScore(highScoreManager.getHighScore());
+    mainMenu.setHighScore(
+        highScoreManager.getHighScore(
+            difficultyManager.getDifficulty()
+        )
+    );
 
     window.draw(backgroundSprite);
 
@@ -289,7 +298,8 @@ void Game::renderRunning()
     hud.draw(
         window,
         scoreManager,
-        highScoreManager
+        highScoreManager,
+        difficultyManager.getDifficulty()
     );
 }
 
@@ -297,7 +307,9 @@ void Game::renderGameOver()
 {
     gameOver.setScores(
         scoreManager.getScore(),
-        highScoreManager.getHighScore()
+        highScoreManager.getHighScore(
+            difficultyManager.getDifficulty()
+        )
     );
 
     window.draw(backgroundSprite);

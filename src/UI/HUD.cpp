@@ -32,7 +32,9 @@ HUD::HUD()
 void HUD::draw(
     sf::RenderWindow& window,
     const ScoreManager& scoreManager,
-    const HighScoreManager& highScoreManager)
+    const HighScoreManager& highScoreManager,
+    Difficulty difficulty
+)
 {
     scoreText.setString(
         Config::UI::PlayingPage::ScorePrompt +
@@ -41,10 +43,13 @@ void HUD::draw(
 
     highScoreText.setString(
         Config::UI::PlayingPage::HighScorePrompt +
-        std::to_string(highScoreManager.getHighScore())
+        std::to_string(
+            highScoreManager.getHighScore(
+                difficulty
+            )
+        )
     );
 
     window.draw(scoreText);
     window.draw(highScoreText);
 }
-

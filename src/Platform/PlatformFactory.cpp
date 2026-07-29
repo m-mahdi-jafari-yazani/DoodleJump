@@ -20,7 +20,6 @@ void PlatformFactory::setDifficulty(
     difficulty = value;
 }
 
-
 PlatformType PlatformFactory::choosePlatformType()
 {
     int chance = chanceDistribution(randomEngine);

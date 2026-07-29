@@ -1,13 +1,17 @@
 #pragma once
 
+#include <array>
+
+#include "Core/Difficulty.hpp"
+
 class HighScoreManager
 {
 public:
     HighScoreManager();
 
-    int getHighScore() const;
+    int getHighScore(Difficulty difficulty) const;
 
-    void update(int score);
+    void update(Difficulty difficulty,int score);
 
 private:
     void load();
@@ -15,5 +19,5 @@ private:
     void save() const;
 
 private:
-    int highScore;
+    std::array<int, 3> highScores{};
 };
